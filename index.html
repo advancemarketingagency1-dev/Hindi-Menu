@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hindi — Menu</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* CHANGE THESE 3 LATER to match your old menu colors */
+      --bg:#0b0b0b;
+      --primary:#d4a44a; /* gold example */
+      --accent:#c23b2a;  /* red example */
+
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.66);
+      --border:rgba(255,255,255,.10);
+      --card:rgba(255,255,255,.06);
+      --ring: rgba(212,164,74,0.35);
+
+      --radius:18px;
+      --shadow:0 18px 55px rgba(0,0,0,.55);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    a{color:inherit;text-decoration:none}
+
+    .hero{
+      position:relative;
+      min-height:42vh;
+      display:flex;
+      align-items:flex-end;
+      border-bottom:1px solid var(--border);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.88)),
+        url("hero.jpg") center/cover no-repeat;
+    }
+    .hero__content{
+      width:min(1040px,92vw);
+      margin:0 auto;
+      padding:34px 0 28px;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      position:relative;
+    }
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{width:58px;height:58px;object-fit:contain;filter:drop-shadow(0 10px 20px rgba(0,0,0,.5))}
+    h1{margin:0;font-family:Fraunces,serif;font-size:clamp(28px,4vw,44px)}
+    .brand p{margin:4px 0 0;color:var(--muted);font-weight:500}
+
+    .btns{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{
+      padding:10px 14px;border-radius:999px;border:1px solid var(--border);
+      background:rgba(255,255,255,.04);font-weight:700;
+      display:inline-flex;align-items:center;justify-content:center;
+      transition:.12s ease; cursor:pointer;
+    }
+    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.22)}
+    .btn--primary{
+      background:linear-gradient(135deg,var(--primary), color-mix(in srgb, var(--primary) 55%, #fff 45%));
+      color:#121212;
+      border-color:color-mix(in srgb, var(--primary) 60%, #fff 40%);
+    }
+
+    .container{width:min(1040px,92vw);margin:0 auto;padding:22px 0 44px}
+    .toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-top:18px}
+    input{
+      width:min(520px,92vw);
+      padding:12px 14px;border-radius:999px;border:1px solid var(--border);
+      background:rgba(255,255,255,.04); color:var(--text); outline:none;
+    }
+    input:focus{border-color:var(--primary);box-shadow:0 0 0 6px var(--ring)}
+    .chips{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 10px}
+    .chip{
+      padding:10px 12px;border-radius:999px;border:1px solid var(--border);
+      background:rgba(255,255,255,.03);font-weight:800;cursor:pointer;
+    }
+    .chip.active{border-color:color-mix(in srgb, var(--primary) 70%, rgba(255,255,255,.10) 30%);box-shadow:0 0 0 6px var(--ring)}
+    .menu{display:flex;flex-direction:column;gap:14px}
+    .category{
+      border-radius:var(--radius);border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow:var(--shadow);overflow:hidden;
+    }
+    .category__header{
+      padding:16px 16px 12px;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      background:
+        radial-gradient(800px 240px at 10% 0%, rgba(212,164,74,.10), transparent 55%),
+        radial-gradient(700px 240px at 90% 0%, rgba(194,59,42,.12), transparent 60%);
+    }
+    .category__header h2{margin:0;font-size:16px;letter-spacing:.2px}
+    .category__count{color:var(--muted);font-weight:800;font-size:12px}
+    .item{
+      display:grid;grid-template-columns:1fr auto;gap:10px;
+      padding:14px 16px;border-top:1px solid rgba(255,255,255,.07);
+    }
+    .name{font-weight:900;margin:0 0 4px}
+    .desc{margin:0;color:var(--muted);font-size:13px;line-height:1.35}
+    .price{font-weight:900;color:color-mix(in srgb, var(--primary) 78%, #fff 22%);white-space:nowrap}
+    .footer{
+      margin-top:18px;border-radius:var(--radius);border:1px solid var(--border);
+      background:rgba(255,255,255,.03);padding:16px;
+    }
+    .muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero__content">
+    <div class="brand">
+      <img src="logo.png" alt="Hindi logo" onerror="this.style.display='none'">
+      <div>
+        <h1>Hindi</h1>
+        <p>Indian Cuisine • New Cairo, Cairo, Egypt</p>
+      </div>
+    </div>
+
+    <div class="btns">
+      <a class="btn btn--primary" href="#menu">View Menu</a>
+      <button class="btn" onclick="window.print()">Print</button>
+    </div>
+  </div>
+</header>
+
+<main class="container" id="menu">
+  <div class="toolbar">
+    <input id="search" type="search" placeholder="Search dishes (e.g., butter, biryani)..." />
+  </div>
+
+  <nav class="chips" id="chips"></nav>
+  <section class="menu" id="root"></section>
+
+  <div class="footer">
+    <strong>Hindi Restaurant</strong>
+    <div class="muted">New Cairo, Cairo, Egypt</div>
+    <div class="muted">Tip: Put a QR code on tables linking to this menu.</div>
+  </div>
+</main>
+
+<script>
+  // ✅ EDIT YOUR MENU HERE (items + prices)
+  const MENU = {
+    currency: "EGP",
+    categories: [
+      {
+        id: "starters",
+        name: "Starters",
+        items: [
+          { name: "Samosa", desc: "Crispy pastry filled with spiced potatoes and peas.", price: 0 },
+          { name: "Chicken Tikka", desc: "Marinated chicken grilled with aromatic spices.", price: 0 }
+        ]
+      },
+      {
+        id: "curries",
+        name: "Curries",
+        items: [
+          { name: "Butter Chicken", desc: "Creamy tomato gravy, tender chicken.", price: 0 },
+          { name: "Chana Masala", desc: "Chickpeas cooked in a rich spiced sauce.", price: 0 }
+        ]
+      }
+    ]
+  };
+
+  const root = document.getElementById("root");
+  const chips = document.getElementById("chips");
+  const search = document.getElementById("search");
+
+  let active = "all";
+  let q = "";
+
+  const esc = s => String(s).replace(/[&<>"']/g, m => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+  }[m]));
+
+  const priceText = v => (Number(v) > 0 ? `${v} ${MENU.currency}` : "");
+
+  function renderChips(){
+    const parts = [];
+    parts.push(`<button class="chip ${active==="all"?"active":""}" data-id="all">All</button>`);
+    for(const c of MENU.categories){
+      parts.push(`<button class="chip ${active===c.id?"active":""}" data-id="${esc(c.id)}">${esc(c.name)}</button>`);
+    }
+    chips.innerHTML = parts.join("");
+    chips.querySelectorAll("button").forEach(b=>{
+      b.onclick = () => {
+        active = b.dataset.id;
+        renderChips();
+        renderMenu();
+        if(active!=="all"){
+          document.getElementById("cat-"+active)?.scrollIntoView({behavior:"smooth",block:"start"});
+        }
+      }
+    });
+  }
+
+  function matches(item){
+    if(!q.trim()) return true;
+    const hay = `${item.name} ${item.desc||""}`.toLowerCase();
+    return hay.includes(q.trim().toLowerCase());
+  }
+
+  function renderMenu(){
+    const parts = [];
+    for(const c of MENU.categories){
+      if(active!=="all" && active!==c.id) continue;
+
+      const items = (c.items||[]).filter(matches);
+      if(items.length===0) continue;
+
+      parts.push(`
+        <article class="category" id="cat-${esc(c.id)}">
+          <div class="category__header">
+            <h2>${esc(c.name)}</h2>
+            <div class="category__count">${items.length} items</div>
+          </div>
+          ${items.map(it=>`
+            <div class="item">
+              <div>
+                <p class="name">${esc(it.name)}</p>
+                ${it.desc ? `<p class="desc">${esc(it.desc)}</p>` : ``}
+              </div>
+              <div class="price">${esc(priceText(it.price))}</div>
+            </div>
+          `).join("")}
+        </article>
+      `);
+    }
+
+    root.innerHTML = parts.join("") || `
+      <div class="footer"><strong>No results</strong><div class="muted">Try another search.</div></div>
+    `;
+  }
+
+  search.oninput = (e)=>{ q = e.target.value; renderMenu(); };
+
+  renderChips();
+  renderMenu();
+</script>
+
+</body>
+</html>
