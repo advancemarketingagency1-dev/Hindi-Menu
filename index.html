@@ -11,34 +11,40 @@
 
   <style>
     :root{
-      /* CHANGE THESE 3 LATER to match your old menu colors */
-      --bg:#0b0b0b;
-      --primary:#d4a44a; /* gold example */
-      --accent:#c23b2a;  /* red example */
+  /* ✅ Extracted from Hindi Menu.pdf */
+  --bg:#FFEDDC;          /* paper cream */
+  --primary:#007070;     /* teal */
+  --accent:#BC6040;      /* terracotta */
+  --gold:#ECB444;        /* gold highlight */
+  --pink:#E45868;        /* optional accent */
 
-      --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.66);
-      --border:rgba(255,255,255,.10);
-      --card:rgba(255,255,255,.06);
-      --ring: rgba(212,164,74,0.35);
+  /* Text / UI tuned to match the PDF style */
+  --text:#080808;
+  --muted:#201818;
 
-      --radius:18px;
-      --shadow:0 18px 55px rgba(0,0,0,.55);
-    }
+  --border:rgba(0,0,0,.10);
+  --card:rgba(255,255,255,.55);
+  --ring: rgba(0,112,112,.18);
+
+  --radius:18px;
+  --shadow:0 18px 55px rgba(0,0,0,.14);
+}
+
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial}
     a{color:inherit;text-decoration:none}
 
     .hero{
-      position:relative;
-      min-height:42vh;
-      display:flex;
-      align-items:flex-end;
-      border-bottom:1px solid var(--border);
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.88)),
-        url("hero.jpg") center/cover no-repeat;
-    }
+  position:relative;
+  min-height:42vh;
+  display:flex;
+  align-items:flex-end;
+  border-bottom:1px solid var(--border);
+  background:
+    linear-gradient(180deg, rgba(255,237,220,.25), rgba(255,237,220,.92)),
+    url("hero.jpg") center/cover no-repeat;
+}
+
     .hero__content{
       width:min(1040px,92vw);
       margin:0 auto;
@@ -62,10 +68,11 @@
     }
     .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.22)}
     .btn--primary{
-      background:linear-gradient(135deg,var(--primary), color-mix(in srgb, var(--primary) 55%, #fff 45%));
-      color:#121212;
-      border-color:color-mix(in srgb, var(--primary) 60%, #fff 40%);
-    }
+  background: linear-gradient(135deg, var(--primary), color-mix(in srgb, var(--primary) 55%, #ffffff 45%));
+  color:#ffffff;
+  border-color: color-mix(in srgb, var(--primary) 70%, rgba(0,0,0,.15) 30%);
+}
+
 
     .container{width:min(1040px,92vw);margin:0 auto;padding:22px 0 44px}
     .toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-top:18px}
@@ -147,26 +154,128 @@
 <script>
   // ✅ EDIT YOUR MENU HERE (items + prices)
   const MENU = {
-    currency: "EGP",
-    categories: [
-      {
-        id: "starters",
-        name: "Starters",
-        items: [
-          { name: "Samosa", desc: "Crispy pastry filled with spiced potatoes and peas.", price: 0 },
-          { name: "Chicken Tikka", desc: "Marinated chicken grilled with aromatic spices.", price: 0 }
-        ]
-      },
-      {
-        id: "curries",
-        name: "Curries",
-        items: [
-          { name: "Butter Chicken", desc: "Creamy tomato gravy, tender chicken.", price: 0 },
-          { name: "Chana Masala", desc: "Chickpeas cooked in a rich spiced sauce.", price: 0 }
-        ]
-      }
-    ]
-  };
+  currency: "EGP",
+  categories: [
+    {
+      id: "starters",
+      name: "Little Bites of Joy",
+      items: [
+        { code: "001", name: "Samosa", desc: "", price: 105 },
+        { code: "002", name: "Paneer Pakora", desc: "", price: 230 },
+        { code: "003", name: "Murgh Pakora", desc: "", price: 250 },
+        { code: "004", name: "Shrimp Pakora", desc: "", price: 490 }
+      ]
+    },
+    {
+      id: "kathi_rolls",
+      name: "Kathi Rolls",
+      items: [
+        { code: "005", name: "Paneer Kathi Roll", desc: "", price: 220 },
+        { code: "006", name: "Chicken Kathi Roll", desc: "", price: 250 },
+        { code: "007", name: "Lamb Seekh Kathi Roll", desc: "", price: 285 },
+        { code: "008", name: "Shrimp Tikka Kathi Roll", desc: "", price: 330 },
+        { code: "009", name: "Shrimp Pakora Kathi Roll", desc: "", price: 350 },
+        { code: "010", name: "Lamb Cubes Kathi Roll", desc: "", price: 385 },
+        { code: "011", name: "Butter Chicken Kathi Roll", desc: "", price: 270 }
+      ]
+    },
+    {
+      id: "tandoori",
+      name: "Whispers from the Tandoori",
+      items: [
+        { code: "012", name: "Mali Murgh Tikka", desc: "", price: 320 },
+        { code: "013", name: "Murgh Tikka", desc: "", price: 320 },
+        { code: "014", name: "Lamb Seekh Kebab", desc: "", price: 450 },
+        { code: "015", name: "Paneer Tikka", desc: "", price: 320 }
+      ]
+    },
+    {
+      id: "main_event",
+      name: "Main Event Marvels",
+      items: [
+        { code: "016", name: "Murgh Makhani (Butter Chicken)", desc: "", price: 390 },
+        { code: "017", name: "Dhaniya Murgh (Coriander Chicken)", desc: "", price: 390 },
+        { code: "018", name: "Murgh Masala", desc: "", price: 370 },
+        { code: "019", name: "Khas Rogan Josh", desc: "", price: 559 },
+        { code: "020", name: "Lamb Vindaloo", desc: "", price: 520 },
+        { code: "021", name: "Shrimp Curry", desc: "", price: 595 },
+        { code: "022", name: "Shrimp Masala", desc: "", price: 575 }
+      ]
+    },
+    {
+      id: "vegetarian",
+      name: "Vegetarian Delights",
+      items: [
+        { code: "023", name: "Palak Paneer", desc: "", price: 290 },
+        { code: "024", name: "Dal Tadke Wali", desc: "", price: 170 },
+        { code: "025", name: "Dal Makhani", desc: "", price: 285 },
+        { code: "026", name: "Aloo Rasadaar", desc: "", price: 200 },
+        { code: "027", name: "Aloo Jeera", desc: "", price: 180 },
+        { code: "028", name: "Baingan Bharta", desc: "", price: 240 }
+      ]
+    },
+    {
+      id: "rice",
+      name: "The Rice Kingdom",
+      items: [
+        { code: "029", name: "Murgh Dum Biryani", desc: "", price: 390 },
+        { code: "030", name: "Lamb Dum Biryani", desc: "", price: 665 },
+        { code: "031", name: "Subz Dum Biryani", desc: "", price: 250 },
+        { code: "032", name: "Shrimp Biryani", desc: "", price: 590 },
+        { code: "033", name: "Plain Dum Biryani", desc: "", price: 135 },
+        { code: "034", name: "Chawal", desc: "", price: 70 }
+      ]
+    },
+    {
+      id: "breads",
+      name: "Breadbasket Bliss",
+      items: [
+        { code: "035", name: "Tandoori Roti", desc: "", price: 30 },
+        { code: "036", name: "Plain Naan", desc: "", price: 30 },
+        { code: "036", name: "Garlic Naan", desc: "", price: 50 },
+        { code: "036", name: "Butter Naan", desc: "", price: 45 },
+        { code: "037", name: "Aloo Paratha", desc: "", price: 60 },
+        { code: "038", name: "Lacha Paratha", desc: "", price: 55 },
+        { code: "039", name: "Stuffed Kulcha", desc: "", price: 75 },
+        { code: "040", name: "Keema Naan", desc: "", price: 125 },
+        { code: "041", name: "Poori", desc: "", price: 30 }
+      ]
+    },
+    {
+      id: "desserts",
+      name: "Sweet Endings",
+      items: [
+        { code: "042", name: "Gulab Jamun", desc: "", price: 120 }
+      ]
+    },
+    {
+      id: "combos",
+      name: "Delightful Combos",
+      items: [
+        { code: "043", name: "Vegetarian Combo", desc: "", price: 950 },
+        { code: "044", name: "The Murgh Platter", desc: "", price: 650 },
+        { code: "045", name: "Maharaja Combo", desc: "", price: 1100 },
+        { code: "046", name: "Tandoori Special Combo", desc: "", price: 850 },
+        { code: "047", name: "Shrimp Combo", desc: "", price: 900 }
+      ]
+    },
+    {
+      id: "sauces_drinks",
+      name: "Sauces & Drinks",
+      items: [
+        { code: "", name: "Raita", desc: "", price: 17 },
+        { code: "", name: "Tamarind Chutney", desc: "", price: 17 },
+        { code: "", name: "Minty Chutney", desc: "", price: 17 },
+        { code: "", name: "Spicy Indian Pickles", desc: "", price: 17 },
+        { code: "", name: "Red Chili Sauce", desc: "", price: 17 },
+        { code: "", name: "Seasonal Fruit Chutneys", desc: "", price: 17 },
+        { code: "", name: "Small Water", desc: "", price: 30 },
+        { code: "", name: "Soft Drinks", desc: "", price: 57 }
+      ]
+    }
+  ]
+};
+
 
   const root = document.getElementById("root");
   const chips = document.getElementById("chips");
